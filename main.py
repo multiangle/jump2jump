@@ -1,10 +1,12 @@
 __author__ = 'multiangle'
 
 import os, sys
+import numpy as np
 import matplotlib.image as img
 import matplotlib.pyplot as plt
+from pprint import pprint
 
-adb_path = 'D:\\multiangle\\software_Add\\AndroidStudio\\SDK\\platform-tools\\adb.exe '
+adb_path = 'E:\\multiangle\\software\\AndroidStudio\\SDK\\platform-tools\\adb.exe '
 if not os.path.exists('pic'):
     os.mkdir('pic')
 
@@ -21,13 +23,22 @@ def action(t):
     print(q)
     os.system(q)
 
-if __name__=='__main__':
-    dist = sys.argv[1]
-    dist = float(dist)
-    duration = round(dist*100*2.6)
-    print(duration)
-    action(duration)
+def imgaeMatch():
+    pattern = img.imread('pic\\item.png')
+    pattern = np.array(pattern, dtype=np.float32)
+    pprint(pattern[:,:,3])
+    plt.imshow(pattern[:,:,3])
+    plt.show()
+    # print(np.shape(pattern))
 
+if __name__=='__main__':
+    # dist = sys.argv[1]
+    # dist = float(dist)
+    # duration = round(dist*100*2.6)
+    # print(duration)
+    # action(duration)
+
+    imgaeMatch()
 
 
 # print(os.path.abspath('.'))
